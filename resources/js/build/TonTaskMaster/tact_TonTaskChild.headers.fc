@@ -1,0 +1,127 @@
+;;
+;; Header files for TonTaskChild
+;; NOTE: declarations are sorted for optimal order
+;;
+
+;; __tact_verify_address
+slice __tact_verify_address(slice address) inline;
+
+;; __tact_load_address
+(slice, slice) __tact_load_address(slice cs) inline;
+
+;; __tact_store_address
+builder __tact_store_address(builder b, slice address) inline;
+
+;; __tact_my_balance
+int __tact_my_balance() inline;
+
+;; __tact_not_null
+forall X -> X __tact_not_null(X x) inline;
+
+;; __tact_context_get
+(int, slice, int, slice) __tact_context_get() inline;
+
+;; __tact_context_get_sender
+slice __tact_context_get_sender() inline;
+
+;; __tact_store_bool
+builder __tact_store_bool(builder b, int v) inline;
+
+;; __tact_slice_eq_bits
+int __tact_slice_eq_bits(slice a, slice b) inline;
+
+;; __tact_float_to_string
+slice __tact_float_to_string(int src, int digits) inline_ref;
+
+;; $Deploy$_load
+(slice, ((int))) $Deploy$_load(slice sc_0) inline;
+
+;; $DeployOk$_store
+builder $DeployOk$_store(builder build_0, (int) v) inline;
+
+;; $DeployOk$_store_cell
+cell $DeployOk$_store_cell((int) v) inline;
+
+;; $TaskData$_store
+builder $TaskData$_store(builder build_0, (int, slice, slice, int, int) v) inline;
+
+;; $TaskData$_load
+(slice, ((int, slice, slice, int, int))) $TaskData$_load(slice sc_0) inline;
+
+;; $InternalTask$_load
+(slice, ((int, slice, slice, int))) $InternalTask$_load(slice sc_0) inline;
+
+;; $ChildCallback$_store
+builder $ChildCallback$_store(builder build_0, (int, slice) v) inline;
+
+;; $ChildCallback$_store_cell
+cell $ChildCallback$_store_cell((int, slice) v) inline;
+
+;; $TonTaskChild$_store
+builder $TonTaskChild$_store(builder build_0, (slice, (int, slice, slice, int, int), int) v) inline;
+
+;; $TonTaskChild$_load
+(slice, ((slice, (int, slice, slice, int, int), int))) $TonTaskChild$_load(slice sc_0) inline;
+
+;; $StateInit$_not_null
+((cell, cell)) $StateInit$_not_null(tuple v) inline;
+
+;; $Context$_get_sender
+_ $Context$_get_sender((int, slice, int, slice) v) inline;
+
+;; $Context$_get_value
+_ $Context$_get_value((int, slice, int, slice) v) inline;
+
+;; $TaskData$_to_external
+(int, slice, slice, int, int) $TaskData$_to_external(((int, slice, slice, int, int)) v) inline;
+
+;; $TonTaskChild$init$_load
+(slice, (((int, slice, slice, int)))) $TonTaskChild$init$_load(slice sc_0) inline;
+
+;; $TaskData$_constructor_id_creator_executor_coin_amount_status
+((int, slice, slice, int, int)) $TaskData$_constructor_id_creator_executor_coin_amount_status(int id, slice creator, slice executor, int coin_amount, int status) inline;
+
+;; $global_send
+() $global_send((int, slice, int, int, cell, cell, cell) $params) impure inline_ref;
+
+;; $SendParameters$_constructor_to_value_mode_body
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode_body(slice to, int value, int mode, cell body) inline;
+
+;; $ChildCallback$_constructor_id_address
+((int, slice)) $ChildCallback$_constructor_id_address(int id, slice address) inline;
+
+;; $TonTaskChild$_contract_init
+(slice, (int, slice, slice, int, int), int) $TonTaskChild$_contract_init((int, slice, slice, int) $msg) impure inline_ref;
+
+;; $TonTaskChild$_contract_load
+(slice, (int, slice, slice, int, int), int) $TonTaskChild$_contract_load() impure inline_ref;
+
+;; $TonTaskChild$_contract_store
+() $TonTaskChild$_contract_store((slice, (int, slice, slice, int, int), int) v) impure inline;
+
+;; $Int$_fun_toCoinsString
+slice $Int$_fun_toCoinsString(int $self) impure inline;
+
+;; $TonTaskChild$_fun_showData
+((slice, (int, slice, slice, int, int), int), (int, slice, slice, int, int)) $TonTaskChild$_fun_showData((slice, (int, slice, slice, int, int), int) $self) impure inline_ref;
+
+;; $TonTaskChild$_fun_balance
+((slice, (int, slice, slice, int, int), int), slice) $TonTaskChild$_fun_balance((slice, (int, slice, slice, int, int), int) $self) impure inline_ref;
+
+;; $SendParameters$_constructor_bounce_to_value_mode_body_code_data
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int bounce, slice to, int value, int mode, cell body, cell code, cell data) inline;
+
+;; $TonTaskChild$_fun_forward
+((slice, (int, slice, slice, int, int), int), ()) $TonTaskChild$_fun_forward((slice, (int, slice, slice, int, int), int) $self, slice $to, cell $body, int $bounce, tuple $init) impure inline_ref;
+
+;; $TonTaskChild$_fun_notify
+((slice, (int, slice, slice, int, int), int), ()) $TonTaskChild$_fun_notify((slice, (int, slice, slice, int, int), int) $self, cell $body) impure inline;
+
+;; $TonTaskChild$_fun_owner
+((slice, (int, slice, slice, int, int), int), slice) $TonTaskChild$_fun_owner((slice, (int, slice, slice, int, int), int) $self) impure inline_ref;
+
+;; $SendParameters$_constructor_to_value_mode
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode(slice to, int value, int mode) inline;
+
+;; $DeployOk$_constructor_queryId
+((int)) $DeployOk$_constructor_queryId(int queryId) inline;

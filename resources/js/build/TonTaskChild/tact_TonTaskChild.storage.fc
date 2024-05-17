@@ -1,0 +1,195 @@
+;;
+;; Type: StateInit
+;; TLB: _ code:^cell data:^cell = StateInit
+;;
+
+((cell, cell)) $StateInit$_not_null(tuple v) inline {
+    throw_if(128, null?(v));
+    var (cell vvv'code, cell vvv'data) = __tact_tuple_destroy_2(v);
+    return (vvv'code, vvv'data);
+}
+
+;;
+;; Type: Context
+;; TLB: _ bounced:bool sender:address value:int257 raw:^slice = Context
+;;
+
+_ $Context$_get_sender((int, slice, int, slice) v) inline {
+    var (v'bounced, v'sender, v'value, v'raw) = v;
+    return v'sender;
+}
+
+_ $Context$_get_value((int, slice, int, slice) v) inline {
+    var (v'bounced, v'sender, v'value, v'raw) = v;
+    return v'value;
+}
+
+;;
+;; Type: SendParameters
+;; TLB: _ bounce:bool to:address value:int257 mode:int257 body:Maybe ^cell code:Maybe ^cell data:Maybe ^cell = SendParameters
+;;
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode_body(slice to, int value, int mode, cell body) inline {
+    return (true, to, value, mode, body, null(), null());
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int bounce, slice to, int value, int mode, cell body, cell code, cell data) inline {
+    return (bounce, to, value, mode, body, code, data);
+}
+
+((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_to_value_mode(slice to, int value, int mode) inline {
+    return (true, to, value, mode, null(), null(), null());
+}
+
+;;
+;; Type: Deploy
+;; Header: 0x946a98b6
+;; TLB: deploy#946a98b6 queryId:uint64 = Deploy
+;;
+
+(slice, ((int))) $Deploy$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2490013878);
+    var v'queryId = sc_0~load_uint(64);
+    return (sc_0, (v'queryId));
+}
+
+;;
+;; Type: DeployOk
+;; Header: 0xaff90f57
+;; TLB: deploy_ok#aff90f57 queryId:uint64 = DeployOk
+;;
+
+builder $DeployOk$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 2952335191, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $DeployOk$_store_cell((int) v) inline {
+    return $DeployOk$_store(begin_cell(), v).end_cell();
+}
+
+((int)) $DeployOk$_constructor_queryId(int queryId) inline {
+    return (queryId);
+}
+
+;;
+;; Type: InternalTask
+;; Header: 0x0a2fd9f4
+;; TLB: internal_task#0a2fd9f4 id:uint128 creator:address executor:address coin_amount:uint64 = InternalTask
+;;
+
+(slice, ((int, slice, slice, int))) $InternalTask$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 170908148);
+    var v'id = sc_0~load_uint(128);
+    var v'creator = sc_0~__tact_load_address();
+    var v'executor = sc_0~__tact_load_address();
+    var v'coin_amount = sc_0~load_uint(64);
+    return (sc_0, (v'id, v'creator, v'executor, v'coin_amount));
+}
+
+;;
+;; Type: ChildCallback
+;; Header: 0x7c2bdc76
+;; TLB: child_callback#7c2bdc76 id:uint64 address:address = ChildCallback
+;;
+
+builder $ChildCallback$_store(builder build_0, (int, slice) v) inline {
+    var (v'id, v'address) = v;
+    build_0 = store_uint(build_0, 2083249270, 32);
+    build_0 = build_0.store_uint(v'id, 64);
+    build_0 = __tact_store_address(build_0, v'address);
+    return build_0;
+}
+
+cell $ChildCallback$_store_cell((int, slice) v) inline {
+    return $ChildCallback$_store(begin_cell(), v).end_cell();
+}
+
+((int, slice)) $ChildCallback$_constructor_id_address(int id, slice address) inline {
+    return (id, address);
+}
+
+;;
+;; Type: TaskData
+;; TLB: _ id:uint128 creator:address executor:address coin_amount:uint64 status:uint8 = TaskData
+;;
+
+builder $TaskData$_store(builder build_0, (int, slice, slice, int, int) v) inline {
+    var (v'id, v'creator, v'executor, v'coin_amount, v'status) = v;
+    build_0 = build_0.store_uint(v'id, 128);
+    build_0 = __tact_store_address(build_0, v'creator);
+    build_0 = __tact_store_address(build_0, v'executor);
+    build_0 = build_0.store_uint(v'coin_amount, 64);
+    build_0 = build_0.store_uint(v'status, 8);
+    return build_0;
+}
+
+(slice, ((int, slice, slice, int, int))) $TaskData$_load(slice sc_0) inline {
+    var v'id = sc_0~load_uint(128);
+    var v'creator = sc_0~__tact_load_address();
+    var v'executor = sc_0~__tact_load_address();
+    var v'coin_amount = sc_0~load_uint(64);
+    var v'status = sc_0~load_uint(8);
+    return (sc_0, (v'id, v'creator, v'executor, v'coin_amount, v'status));
+}
+
+(int, slice, slice, int, int) $TaskData$_to_external(((int, slice, slice, int, int)) v) inline {
+    var (v'id, v'creator, v'executor, v'coin_amount, v'status) = v; 
+    return (v'id, v'creator, v'executor, v'coin_amount, v'status);
+}
+
+((int, slice, slice, int, int)) $TaskData$_constructor_id_creator_executor_coin_amount_status(int id, slice creator, slice executor, int coin_amount, int status) inline {
+    return (id, creator, executor, coin_amount, status);
+}
+
+;;
+;; Type: TonTaskChild
+;;
+
+builder $TonTaskChild$_store(builder build_0, (slice, (int, slice, slice, int, int), int) v) inline {
+    var (v'owner, (v'data'id, v'data'creator, v'data'executor, v'data'coin_amount, v'data'status), v'deployTime) = v;
+    build_0 = __tact_store_address(build_0, v'owner);
+    build_0 = $TaskData$_store(build_0, (v'data'id, v'data'creator, v'data'executor, v'data'coin_amount, v'data'status));
+    var build_1 = begin_cell();
+    build_1 = build_1.store_uint(v'deployTime, 32);
+    build_0 = store_ref(build_0, build_1.end_cell());
+    return build_0;
+}
+
+(slice, ((slice, (int, slice, slice, int, int), int))) $TonTaskChild$_load(slice sc_0) inline {
+    var v'owner = sc_0~__tact_load_address();
+    var v'data = sc_0~$TaskData$_load();
+    slice sc_1 = sc_0~load_ref().begin_parse();
+    var v'deployTime = sc_1~load_uint(32);
+    return (sc_0, (v'owner, v'data, v'deployTime));
+}
+
+(slice, (((int, slice, slice, int)))) $TonTaskChild$init$_load(slice sc_0) inline {
+    var v'msg = sc_0~$InternalTask$_load();
+    return (sc_0, (v'msg));
+}
+
+(slice, (int, slice, slice, int, int), int) $TonTaskChild$_contract_load() impure inline_ref {
+    slice $sc = get_data().begin_parse();
+    __tact_context_sys = $sc~load_ref();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$TonTaskChild$_load();
+    } else {
+        ;; Allow only workchain deployments
+        throw_unless(137, my_address().preload_uint(11) == 1024);
+        ((int, slice, slice, int) msg) = $sc~$TonTaskChild$init$_load();
+        $sc.end_parse();
+        return $TonTaskChild$_contract_init(msg);
+    }
+}
+
+() $TonTaskChild$_contract_store((slice, (int, slice, slice, int, int), int) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_ref(__tact_context_sys);
+    b = b.store_int(true, 1);
+    b = $TonTaskChild$_store(b, v);
+    set_data(b.end_cell());
+}

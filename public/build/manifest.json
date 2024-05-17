@@ -1,0 +1,96 @@
+{
+  "_store-De8898vB.js": {
+    "file": "assets/store-De8898vB.js",
+    "name": "store",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_useTaskParentContract-CpOJkH2F.js": {
+    "file": "assets/useTaskParentContract-CpOJkH2F.js",
+    "name": "useTaskParentContract",
+    "imports": [
+      "_useTonConnect-JmYoy3V7.js",
+      "resources/js/app.jsx"
+    ]
+  },
+  "_useTonConnect-JmYoy3V7.js": {
+    "file": "assets/useTonConnect-JmYoy3V7.js",
+    "name": "useTonConnect",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Create.jsx": {
+    "file": "assets/Create-C2lsAv6Z.js",
+    "name": "Create",
+    "src": "resources/js/Pages/Create.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_useTonConnect-JmYoy3V7.js"
+    ],
+    "css": [
+      "assets/Create-BJZYDppB.css"
+    ]
+  },
+  "resources/js/Pages/Exec.jsx": {
+    "file": "assets/Exec-D202Vc7r.js",
+    "name": "Exec",
+    "src": "resources/js/Pages/Exec.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_store-De8898vB.js"
+    ]
+  },
+  "resources/js/Pages/Main.jsx": {
+    "file": "assets/Main-BkMMHnyf.js",
+    "name": "Main",
+    "src": "resources/js/Pages/Main.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_useTonConnect-JmYoy3V7.js"
+    ]
+  },
+  "resources/js/Pages/TaskPage.jsx": {
+    "file": "assets/TaskPage-D53ZZUcm.js",
+    "name": "TaskPage",
+    "src": "resources/js/Pages/TaskPage.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_useTonConnect-JmYoy3V7.js",
+      "_useTaskParentContract-CpOJkH2F.js"
+    ]
+  },
+  "resources/js/Pages/Tasks.jsx": {
+    "file": "assets/Tasks-780u6pdq.js",
+    "name": "Tasks",
+    "src": "resources/js/Pages/Tasks.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_useTonConnect-JmYoy3V7.js",
+      "_store-De8898vB.js",
+      "_useTaskParentContract-CpOJkH2F.js"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-C1FQkjYa.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Create.jsx",
+      "resources/js/Pages/Exec.jsx",
+      "resources/js/Pages/Main.jsx",
+      "resources/js/Pages/TaskPage.jsx",
+      "resources/js/Pages/Tasks.jsx"
+    ],
+    "css": [
+      "assets/app-DKg2Yx8T.css"
+    ]
+  }
+}

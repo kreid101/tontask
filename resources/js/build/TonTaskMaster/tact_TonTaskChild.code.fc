@@ -1,0 +1,168 @@
+#pragma version =0.4.4;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+#include "tact_TonTaskChild.headers.fc";
+#include "tact_TonTaskChild.stdlib.fc";
+#include "tact_TonTaskChild.storage.fc";
+
+;;
+;; Contract TonTaskChild functions
+;;
+
+(slice, (int, slice, slice, int, int), int) $TonTaskChild$_contract_init((int, slice, slice, int) $msg) impure inline_ref {
+    var (($msg'id, $msg'creator, $msg'executor, $msg'coin_amount)) = $msg;
+    var (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime)) = (null(), null(), null());
+    throw_unless(11133, ( ~ __tact_slice_eq_bits($msg'executor, $msg'creator) ));
+    ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status) = $TaskData$_constructor_id_creator_executor_coin_amount_status($msg'id, $msg'creator, $msg'executor, ($Context$_get_value(__tact_context_get()) - 50000000), 1);
+    $self'deployTime = now();
+    $self'owner = __tact_context_get_sender();
+    $global_send($SendParameters$_constructor_to_value_mode_body(__tact_context_get_sender(), 50000000, 2, $ChildCallback$_store_cell($ChildCallback$_constructor_id_address($self'data'id, my_address()))));
+    return ($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime);
+}
+
+((slice, (int, slice, slice, int, int), int), (int, slice, slice, int, int)) $TonTaskChild$_fun_showData((slice, (int, slice, slice, int, int), int) $self) impure inline_ref {
+    var (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime)) = $self;
+    return (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime), ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status));
+}
+
+((slice, (int, slice, slice, int, int), int), slice) $TonTaskChild$_fun_balance((slice, (int, slice, slice, int, int), int) $self) impure inline_ref {
+    var (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime)) = $self;
+    return (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime), $Int$_fun_toCoinsString(__tact_my_balance()));
+}
+
+((slice, (int, slice, slice, int, int), int), slice) $TonTaskChild$_fun_owner((slice, (int, slice, slice, int, int), int) $self) impure inline_ref {
+    var (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime)) = $self;
+    return (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime), $self'owner);
+}
+
+;;
+;; Receivers of a Contract TonTaskChild
+;;
+
+(((slice, (int, slice, slice, int, int), int)), ()) %$TonTaskChild$_internal_empty((slice, (int, slice, slice, int, int), int) $self) impure inline {
+    var ($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime) = $self;
+    return (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime), ());
+}
+
+((slice, (int, slice, slice, int, int), int), ()) $TonTaskChild$_internal_text_90849119764ec734bfb6fc6508bb03e846e60c56255ac604444e30a97ddded2a((slice, (int, slice, slice, int, int), int) $self) impure inline {
+    var ($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime) = $self;
+    throw_unless(25049, ( (( __tact_slice_eq_bits($self'data'creator, $Context$_get_sender(__tact_context_get())) )) ? (true) : (( __tact_slice_eq_bits($self'owner, $Context$_get_sender(__tact_context_get())) )) ));
+    $self'data'status = 4;
+    $global_send($SendParameters$_constructor_to_value_mode($self'data'executor, (__tact_my_balance() - 10000000), 2));
+    return (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime), ());
+}
+
+(((slice, (int, slice, slice, int, int), int)), ()) $TonTaskChild$_internal_binary_Deploy((slice, (int, slice, slice, int, int), int) $self, (int) $deploy) impure inline {
+    var ($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime) = $self;
+    var ($deploy'queryId) = $deploy;
+    ($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime)~$TonTaskChild$_fun_notify($DeployOk$_store_cell($DeployOk$_constructor_queryId($deploy'queryId)));
+    return (($self'owner, ($self'data'id, $self'data'creator, $self'data'executor, $self'data'coin_amount, $self'data'status), $self'deployTime), ());
+}
+
+;;
+;; Get methods of a Contract TonTaskChild
+;;
+
+_ %showData() method_id(67755) {
+    var self = $TonTaskChild$_contract_load();
+    var res = self~$TonTaskChild$_fun_showData();
+    return $TaskData$_to_external(res);
+}
+
+_ %balance() method_id(104128) {
+    var self = $TonTaskChild$_contract_load();
+    var res = self~$TonTaskChild$_fun_balance();
+    return res;
+}
+
+_ %owner() method_id(83229) {
+    var self = $TonTaskChild$_contract_load();
+    var res = self~$TonTaskChild$_fun_owner();
+    return res;
+}
+
+_ supported_interfaces() method_id {
+    return (
+        "org.ton.introspection.v0"H >> 128,
+        "org.ton.abi.ipfs.v0"H >> 128,
+        "org.ton.deploy.lazy.v0"H >> 128,
+        "org.ton.chain.workchain.v0"H >> 128,
+        "org.ton.ownable"H >> 128
+    );
+}
+
+_ get_abi_ipfs() method_id {
+    return "ipfs://Qmb73N8z7dyBCRYNkWt7qNhLvmdLPRtiTqY8FyE32izJ85";
+}
+
+_ lazy_deployment_completed() method_id {
+    return get_data().begin_parse().load_int(1);
+}
+
+;;
+;; Routing of a Contract TonTaskChild
+;;
+
+((slice, (int, slice, slice, int, int), int), int) $TonTaskChild$_contract_router_internal((slice, (int, slice, slice, int, int), int) self, int msg_bounced, slice in_msg) impure inline_ref {
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        return (self, true);
+    }
+    
+    ;; Parse incoming message
+    int op = 0;
+    if (slice_bits(in_msg) >= 32) {
+        op = in_msg.preload_uint(32);
+    }
+    
+    
+    ;; Receive empty message
+    if ((op == 0) & (slice_bits(in_msg) <= 32)) {
+        self~%$TonTaskChild$_internal_empty();
+        return (self, true);
+    }
+    
+    ;; Receive Deploy message
+    if (op == 2490013878) {
+        var msg = in_msg~$Deploy$_load();
+        self~$TonTaskChild$_internal_binary_Deploy(msg);
+        return (self, true);
+    }
+    
+    ;; Text Receivers
+    if (op == 0) {
+        var text_op = slice_hash(in_msg);
+        
+        ;; Receive "task is done" message
+        if (text_op == 0x90849119764ec734bfb6fc6508bb03e846e60c56255ac604444e30a97ddded2a) {
+            self~$TonTaskChild$_internal_text_90849119764ec734bfb6fc6508bb03e846e60c56255ac604444e30a97ddded2a();
+            return (self, true);
+        }
+    }
+    
+    return (self, false);
+}
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    var msg_flags = cs~load_uint(4);
+    var msg_bounced = -(msg_flags & 1);
+    slice msg_sender_addr = __tact_verify_address(cs~load_msg_addr());
+    __tact_context = (msg_bounced, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var self = $TonTaskChild$_contract_load();
+    
+    ;; Handle operation
+    int handled = self~$TonTaskChild$_contract_router_internal(msg_bounced, in_msg);
+    
+    ;; Throw if not handled
+    throw_unless(130, handled);
+    
+    ;; Persist state
+    $TonTaskChild$_contract_store(self);
+}
