@@ -23,8 +23,7 @@ class MainController extends Controller
     function tasks(Request $request)
     {
         $tasks=Task::with('responses')->where('user_id','=',$request->wallet)->orderBy('created_at','desc')->get();
-        $res=Responses::with('task')->where('user_id','=',$request->wallet)->get();
-        return Inertia::render('Tasks',['CreatedTasks'=>$tasks,'TakenTasks'=>$res]);
+        return Inertia::render('Tasks',['CreatedTasks'=>$tasks]);
     }
     function task(Request $request)
     {
@@ -52,7 +51,7 @@ class MainController extends Controller
         $task->save();
         $this->moveAndSave($request->images,$task);
 
-        return redirect('/');
+        return Inertia::render('Create')->with('flash.message','success');
     }
     function newUser($req)
     {

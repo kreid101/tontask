@@ -15,7 +15,6 @@ export default function Main() {
             },[tonConnect.connected])
     return(
         <>
-            <input type=""/>
             <TonConnectButton/>
             {
                 tonConnect.connected === false ?  <h1>connect your wallet</h1> : ""

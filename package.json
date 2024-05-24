@@ -31,6 +31,7 @@
         "@ton/crypto": "^3.2.0",
         "@ton/ton": "^13.11.1",
         "@tonconnect/ui-react": "^2.0.0",
+        "@twa-dev/sdk": "^7.0.0",
         "@types/react": "^18.3.1",
         "@types/react-dom": "^18.3.0",
         "buffer": "npm:Buffer@^0.0.0",
@@ -38,7 +39,9 @@
         "filepond": "^4.31.1",
         "filepond-plugin-image-exif-orientation": "^1.0.11",
         "filepond-plugin-image-preview": "^4.6.12",
+        "konsta": "^3.1.3",
         "react-filepond": "^7.1.2",
+        "react-image-viewer-hook": "github:rkusa/react-image-viewer-hook",
         "ton-crypto": "^3.2.0",
         "zustand": "^4.5.2"
     }

@@ -6,9 +6,11 @@ import {useTonConnect} from "@/hooks/useTonConnect.ts";
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import {useState,useEffect} from "react";
 import * as filepond from "filepond";
-import {router} from "@inertiajs/react";
-import {Address} from "@ton/core";
-import {useTonAddress, useTonWallet} from "@tonconnect/ui-react";
+import {TonConnectButton, useTonAddress, useTonWallet} from "@tonconnect/ui-react";
+import {Icon, List, ListInput, Navbar, Page, Notification, Button,Popup} from "konsta/react";
+import {arrowLeft} from "@/components/Icons.jsx";
+import {usePage,router} from "@inertiajs/react";
+
 
 
 filepond.setOptions({
@@ -24,33 +26,47 @@ export default function Create()
     const tonConnect=useTonConnect();
     const wallet=useTonWallet();
     const tonAddress=useTonAddress()
-    useEffect( () => {
-       if(tonConnect.connected === false)
-       {
-           router.get('/')
-       }
-       else
-       {
-          values.wallet= tonAddress
-       }
-    }, [tonConnect.connected]);
-
+    const {flash}=usePage().props
+    const [popupwin,setpopupwin]=useState(false)
     const [values,setValues] = useState({
-        wallet:"",
+        wallet:tonAddress.toString(),
         headline:"",
         desc:"",
         images:[],
         price:0
 
     })
-    function handleSubmit(e) {
-        e.preventDefault()
-        router.post('/newtask',values)
+     function handleSubmit() {
+        if(tonConnect.connected)
+        {
+            router.post('/newtask',values)
+        }
+       else
+        {
+            setpopupwin(true)
+        }
     }
-
+    useEffect(()=>{
+        if(flash.message === 'success')
+        {
+            setTimeout(()=>{router.get('/')},2000)
+        }
+        if(tonConnect.connected !== true)
+        {
+            setpopupwin(true)
+        }
+        if(tonConnect.connected === true)
+        {
+            setpopupwin(false)
+        }
+    },[flash,tonConnect.connected])
     function handleChange(e) {
         const key = e.target.id;
-        const value = e.target.value
+        const value = e.target.value;
+        if (values.wallet === '')
+        {
+            values.wallet=tonAddress.toString()
+        }
         setValues(values => ({
             ...values,
             [key]: value,
@@ -60,25 +76,42 @@ export default function Create()
     {
        values.images.push(e.serverId)
     }
+    const visitMain=()=>{
+        router.get('/tasks/'+ tonAddress)
+    }
 
     return(
-        <div>
-            <button className={"m-8"} onClick={() => {
-                router.get('/')
-            }}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                     stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
-                </svg>
-            </button>
-            <div className={"flex justify-center"}>
-
-                <form className={"flex flex-col"} onSubmit={handleSubmit}>
-                    <label htmlFor="">Headline</label>
-                    <input id="headline" value={values.headline} onChange={handleChange} type="text"/>
-                    <label htmlFor="">description</label>
-                    <textarea id="desc" value={values.desc} onChange={handleChange} cols="30" rows="10"></textarea>
-                    <label htmlFor="">images</label>
+            <Page>
+                <Navbar
+                    centerTitle
+                    title="Create Task"
+                    left={<Icon onClick={visitMain} className={"cursor-pointer"} material={arrowLeft()}></Icon> }
+                />
+                {flash.message}
+                <Notification
+                    opened={flash.message === 'success'}
+                    title="Your task is created"
+                    text="You will be redirected to main page"
+                />
+                <List>
+                    <ListInput onChange={handleChange} inputId={'headline'} outline  type="text"  placeholder="Your Title" label={"Title"}></ListInput>
+                    <ListInput
+                        outline
+                        inputId={'desc'}
+                        onChange={handleChange}
+                        label="Description"
+                        type="textarea"
+                        placeholder="Task description"
+                        inputClassName="!h-20 resize-none"
+                    />
+                    <ListInput
+                        outline
+                        label="Price"
+                        type="text"
+                        placeholder="1"
+                        inputId={'price'}
+                        onChange={handleChange}
+                    />
                     <FilePond
                         onprocessfile={(error, file) => {
                             addImage(file)
@@ -88,12 +121,12 @@ export default function Create()
                         name="files"
                         labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
                     />
-                    <label htmlFor="price"></label>
-                    <input id="price" value={values.price} onChange={handleChange} type="text"/>
-                    <button>submit</button>
-                </form>
+                    <Button onClick={handleSubmit}>Send</Button>
+                </List>
 
-            </div>
-        </div>
+                <Popup opened={popupwin} onBackdropClick={() => setpopupwin(false)}>
+                    <TonConnectButton/>
+                </Popup>
+            </Page>
     )
 }

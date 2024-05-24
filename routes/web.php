@@ -8,7 +8,7 @@ use Inertia\Inertia;
 Route::get('/',[\App\Http\Controllers\MainController::class,'index']);
 Route::get('/task/{num}',[\App\Http\Controllers\MainController::class,'task']);
 Route::get('/tasks/{wallet?}', [\App\Http\Controllers\MainController::class,'tasks']);
-Route::get('/create', [\App\Http\Controllers\MainController::class,'create']);
+Route::get('/create', [\App\Http\Controllers\MainController::class,'create'])->name('create');
 Route::post('/save_img',[\App\Http\Controllers\ImageController::class,'save']);
 Route::delete('/save_img',[\App\Http\Controllers\ImageController::class,'delete']);
 Route::post('/newtask',[\App\Http\Controllers\MainController::class,'newTask']);

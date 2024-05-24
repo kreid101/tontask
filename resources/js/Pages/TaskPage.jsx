@@ -2,20 +2,31 @@ import {useEffect, useState} from "react";
 import {router} from "@inertiajs/react";
 import {Address, toNano} from "@ton/core";
 import {useTaskParentContract} from "@/hooks/useTaskParentContract.ts";
+import {Block, BlockTitle, Icon, Navbar, Page, BlockHeader, BlockFooter} from "konsta/react";
+import {arrowLeft} from "@/components/Icons.jsx";
+import {useTonAddress} from "@tonconnect/ui-react";
+import { useImageViewer } from 'react-image-viewer-hook'
+
+
 
 export default function ({task})
 {
-    const exec=task.responses.map((item)=> <div key={item.id} className={"flex gap-4"}> <p>{item.user_id}</p> <button onClick={()=>chooseFunc(item)}>choose</button> </div>)
+    const { getOnClick, ImageViewer } = useImageViewer()
+    const images=task.images.map((img)=> <img className={"max-w-24"} onClick={getOnClick('/'+img.link)} src={'/'+img.link} />);
     const [message,setMsg]=useState({
         id:BigInt(task.id),
         sender:Address.parse(task.user_id),
         executor:null,
         coin_amount:toNano(task.price)
     });
+    const visitMain=()=>{
+        router.get('/tasks/'+ tonAddress)
+    }
     const chooseFunc=async (item)=>{
         await setMsg(prevState => {return {...prevState,executor: Address.parse(item.user_id)}})
         contract.newTask(message)
     }
+    const tonAddress=useTonAddress();
     const contract = useTaskParentContract()
     const done = async ()=>{
         let address= await contract.getChild(task.id);
@@ -37,20 +48,23 @@ export default function ({task})
     const call=()=>{setInterval(checking ,5000)}
     useEffect(call,[])
     return (
-        <div>
-            <button onClick={()=>{router.get('/')}}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                     stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/>
-                </svg>
-            </button>
-            <h1>{task.headline}</h1>
-            <p>Status : {task.status}</p>
-            <p>{task.description}</p>
-            {task.status == 0 ?  'responses:' + {exec} : ''}
-            {task.status == 1 ?  <button onClick={done}>mark</button> : ''}
+        <Page>
+        <Navbar
+            centerTitle
+            title="Task"
+            left={<Icon onClick={visitMain} className={"cursor-pointer"} material={arrowLeft()}></Icon>}
+        />
+        <BlockTitle colors={{textMaterial:"text-black"}} large>{task.headline}</BlockTitle>
+        <BlockHeader>{task.created_at}</BlockHeader>
+         <Block strong inset outline>
+             {task.description}
+         </Block>
+         <BlockFooter>
+             price:{ task.price}
+         </BlockFooter>
+            {images}
+            <ImageViewer/>
+        </Page>
 
-
-        </div>
     )
 }

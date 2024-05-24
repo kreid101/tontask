@@ -18,4 +18,10 @@ class Task extends Model
     {
         return $this->hasMany(Responses::class,'task_id','id');
     }
+    protected function casts(): array
+    {
+        return [
+            'created_at' => 'datetime:d-m-Y',
+        ];
+    }
 }
