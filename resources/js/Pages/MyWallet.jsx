@@ -1,11 +1,13 @@
 import {Block, Navbar, Page} from "konsta/react";
 import {TonConnectButton} from "@tonconnect/ui-react";
 import Layout from "@/Layouts/Layout.jsx";
-import {useInitData} from "@tma.js/sdk-react";
+import {useContext, useEffect} from "react";
 
 export default function MyWallet()
 {
-    const initdata=useInitData()
+    useEffect(()=>{
+        console.log(window.Telegram.WebApp.initData)
+    })
     return (
         <Layout>
         <Page>
@@ -13,7 +15,7 @@ export default function MyWallet()
             <Block>
                 <TonConnectButton></TonConnectButton>
                 MyAddress:
-                {initdata}
+
             </Block>
         </Page>
         </Layout>

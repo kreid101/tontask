@@ -16,6 +16,7 @@
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
         @inertiaHead
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
     </head>
     <body class="font-sans antialiased">
         @inertia

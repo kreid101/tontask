@@ -10,7 +10,6 @@ import {TonConnectButton, useTonAddress, useTonWallet} from "@tonconnect/ui-reac
 import {Icon, List, ListInput, Navbar, Page, Notification, Button,Popup} from "konsta/react";
 import {arrowLeft} from "@/components/Icons.jsx";
 import {usePage,router} from "@inertiajs/react";
-import {useViewport} from "@tma.js/sdk-react";
 
 
 filepond.setOptions({

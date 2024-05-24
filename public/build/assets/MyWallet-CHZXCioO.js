@@ -1,1 +1,0 @@
-import{b as a,j as s,T as o}from"./app-B-7a2OMU.js";import{P as r,N as e,e as n}from"./Icons-BlbIg6Sa.js";import{L as i}from"./Layout-BbKmuled.js";function c(){const t=a();return s.jsx(i,{children:s.jsxs(r,{children:[s.jsx(e,{title:"Wallet"}),s.jsxs(n,{children:[s.jsx(o,{}),"MyAddress:",t]})]})})}export{c as default};
