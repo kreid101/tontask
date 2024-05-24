@@ -10,7 +10,7 @@ import {TonConnectButton, useTonAddress, useTonWallet} from "@tonconnect/ui-reac
 import {Icon, List, ListInput, Navbar, Page, Notification, Button,Popup} from "konsta/react";
 import {arrowLeft} from "@/components/Icons.jsx";
 import {usePage,router} from "@inertiajs/react";
-
+import {useViewport} from "@tma.js/sdk-react";
 
 
 filepond.setOptions({
@@ -28,6 +28,7 @@ export default function Create()
     const tonAddress=useTonAddress()
     const {flash}=usePage().props
     const [popupwin,setpopupwin]=useState(false)
+    const vp=useViewport()
     const [values,setValues] = useState({
         wallet:tonAddress.toString(),
         headline:"",
@@ -47,6 +48,7 @@ export default function Create()
         }
     }
     useEffect(()=>{
+        console.log(vp)
         if(flash.message === 'success')
         {
             setTimeout(()=>{router.get('/')},2000)

@@ -27,11 +27,11 @@
     "dependencies": {
         "@orbs-network/ton-access": "^2.3.3",
         "@tanstack/react-query": "^5.32.0",
+        "@tma.js/sdk-react": "^2.2.0",
         "@ton/core": "^0.56.3",
         "@ton/crypto": "^3.2.0",
         "@ton/ton": "^13.11.1",
         "@tonconnect/ui-react": "^2.0.0",
-        "@twa-dev/sdk": "^7.0.0",
         "@types/react": "^18.3.1",
         "@types/react-dom": "^18.3.0",
         "buffer": "npm:Buffer@^0.0.0",
