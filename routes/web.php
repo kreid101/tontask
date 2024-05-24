@@ -15,3 +15,4 @@ Route::post('/newtask',[\App\Http\Controllers\MainController::class,'newTask']);
 Route::get('/exec/{wallet?}',[\App\Http\Controllers\MainController::class,'exec']);
 Route::post('/taketask',[\App\Http\Controllers\MainController::class,'take']);
 Route::post('/updtask',[\App\Http\Controllers\MainController::class,'updtask']);
+Route::get('/mywallet',[\App\Http\Controllers\MainController::class,'mywallet']);

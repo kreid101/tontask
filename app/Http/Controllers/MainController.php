@@ -124,4 +124,8 @@ class MainController extends Controller
        $item->exec_id=$request->exec;
        $item->save();
     }
+    function mywallet()
+    {
+        return Inertia::render('MyWallet');
+    }
 }

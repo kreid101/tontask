@@ -13,12 +13,16 @@ export default function Menu()
     const visitExec=()=>{
         router.get("/exec/" + wallet)
     }
+    const visitWallet=()=>{
+        console.log(123)
+        router.get("/mywallet")
+    }
     return(
        <Tabbar className={'left-0 bottom-0 fixed'}>
            <TabbarLink onClick={visitMain} icon={Edit()} active={url.startsWith('/tasks')}></TabbarLink>
            <TabbarLink onClick={visitExec} icon={List()} active={url.startsWith('/exec')}></TabbarLink>
            <TabbarLink icon={TaskStack()}></TabbarLink>
-           <TabbarLink icon={WalletIcon()}></TabbarLink>
+           <TabbarLink onClick={visitWallet} icon={WalletIcon()} active={url.startsWith('/mywallet')}></TabbarLink>
        </Tabbar>
     )
 
