@@ -27,7 +27,6 @@ export default function Create()
     const tonAddress=useTonAddress()
     const {flash}=usePage().props
     const [popupwin,setpopupwin]=useState(false)
-    const vp=useViewport()
     const [values,setValues] = useState({
         wallet:tonAddress.toString(),
         user_id:window.Telegram.WebApp.initData.user_id,
