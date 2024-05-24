@@ -89,11 +89,11 @@ class MainController extends Controller
         $tasks=null;
         if($request->wallet != null)
         {
-            $tasks=Task::where('user_id','!=',$request->wallet)->get();
+            $tasks=Task::where('user_id','!=',$request->wallet)->orderBy('created_at','desc')->get();
         }
         else
         {
-            $tasks=Task::all();
+            $tasks=Task::orderBy('created_at','desc')->all();
         }
         return Inertia::render("Exec",['tasks'=>$tasks]);
     }

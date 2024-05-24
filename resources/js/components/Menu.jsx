@@ -14,7 +14,6 @@ export default function Menu()
         router.get("/exec/" + wallet)
     }
     const visitWallet=()=>{
-        console.log(123)
         router.get("/mywallet")
     }
     return(

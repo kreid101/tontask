@@ -1,0 +1,1 @@
+import{r as t,j as s,T as e}from"./app-DzJEpXaM.js";import{P as a,N as o,f as r}from"./Icons-kv67BJ2F.js";import{L as n}from"./Layout-_aDQeel1.js";function x(){return t.useEffect(()=>{console.log(window.Telegram.WebApp.initData)}),s.jsx(n,{children:s.jsxs(a,{children:[s.jsx(o,{title:"Wallet"}),s.jsxs(r,{children:[s.jsx(e,{}),"MyAddress:"]})]})})}export{x as default};

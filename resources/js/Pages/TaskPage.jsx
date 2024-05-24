@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {router} from "@inertiajs/react";
+import {router, usePage} from "@inertiajs/react";
 import {Address, toNano} from "@ton/core";
 import {useTaskParentContract} from "@/hooks/useTaskParentContract.ts";
 import {Block, BlockTitle, Icon, Navbar, Page, BlockHeader, BlockFooter} from "konsta/react";
@@ -12,6 +12,7 @@ import { useImageViewer } from 'react-image-viewer-hook'
 export default function ({task})
 {
     const { getOnClick, ImageViewer } = useImageViewer()
+    const { url, component } = usePage()
     const images=task.images.map((img)=> <img className={"max-w-24"} onClick={getOnClick('/'+img.link)} src={'/'+img.link} />);
     const [message,setMsg]=useState({
         id:BigInt(task.id),
@@ -32,6 +33,15 @@ export default function ({task})
         let address= await contract.getChild(task.id);
         contract.markAsDone(address)
     }
+
+    function takeTask()
+    {
+        let work={
+            id:task.id,
+            wallet:tonAddress.toString()
+        }
+        router.post('/taketask',work)
+    }
     async function checking()
     {
        let address= await contract.getChild(task.id);
@@ -47,6 +57,10 @@ export default function ({task})
     }
     const call=()=>{setInterval(checking ,5000)}
     useEffect(call,[])
+    const share=()=>{
+        window.Telegram.WebApp.openTelegramLink(url)
+    }
+    const responses= task.responses.map(res=> <li>{res.user_id}</li>)
     return (
         <Page>
         <Navbar
@@ -64,6 +78,9 @@ export default function ({task})
          </BlockFooter>
             {images}
             <ImageViewer/>
+            <button onClick={share}>share</button>
+            <button onClick={takeTask}>take task</button>
+            {responses}
         </Page>
 
     )

@@ -30,6 +30,10 @@ export default function Create()
     const vp=useViewport()
     const [values,setValues] = useState({
         wallet:tonAddress.toString(),
+        user_id:window.Telegram.WebApp.initData.user_id,
+        first_name:window.Telegram.WebApp.initData.first_name,
+        last_name:window.Telegram.WebApp.initData.last_name,
+        username:window.Telegram.WebApp.initData.username,
         headline:"",
         desc:"",
         images:[],
@@ -39,6 +43,7 @@ export default function Create()
      function handleSubmit() {
         if(tonConnect.connected)
         {
+            console.log(values)
             router.post('/newtask',values)
         }
        else
@@ -47,7 +52,6 @@ export default function Create()
         }
     }
     useEffect(()=>{
-        console.log(vp)
         if(flash.message === 'success')
         {
             setTimeout(()=>{router.get('/')},2000)
