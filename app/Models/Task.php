@@ -18,6 +18,10 @@ class Task extends Model
     {
         return $this->hasMany(Responses::class,'task_id','id');
     }
+    function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
     protected function casts(): array
     {
         return [

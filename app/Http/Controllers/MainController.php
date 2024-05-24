@@ -56,16 +56,12 @@ class MainController extends Controller
     function newUser($req)
     {
         $queryString = $req->initdata;
-
         parse_str($queryString, $initData);  // Split into key-value pairs
-
-        // Decode and parse user data
         try {
             $initData['user'] = json_decode(urldecode($initData['user']), true);
         } catch (Exception $e) {
             echo "Error parsing user data: " . $e->getMessage();
         }
-
         $user = new User();
         $user->fname=$initData['user']['first_name'];
         $user->lname=$initData['user']['last_name'];
@@ -140,8 +136,20 @@ class MainController extends Controller
        $item->exec_id=$request->exec;
        $item->save();
     }
+    function markasdone(Request $req)
+    {
+        $item = Task::find($req->id);
+        $item->status=2;
+        $item->save();
+        return Inertia::render("TaskPage",['task'=>$item]);
+    }
     function mywallet()
     {
         return Inertia::render('MyWallet');
+    }
+    function takentasks(Request $req)
+    {
+        $taken=Task::where('exec_id','=',$req->wallet)->get();
+        return Inertia::render('TakenTasks',['taken'=>$taken]);
     }
 }

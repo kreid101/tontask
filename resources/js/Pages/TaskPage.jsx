@@ -2,18 +2,20 @@ import {useEffect, useState} from "react";
 import {router, usePage} from "@inertiajs/react";
 import {Address, toNano} from "@ton/core";
 import {useTaskParentContract} from "@/hooks/useTaskParentContract.ts";
-import {Block, BlockTitle, Icon, Navbar, Page, BlockHeader, BlockFooter} from "konsta/react";
+import {Block, BlockTitle, Icon, Navbar, Page, BlockHeader, BlockFooter, Button} from "konsta/react";
 import {arrowLeft} from "@/components/Icons.jsx";
 import {useTonAddress} from "@tonconnect/ui-react";
 import { useImageViewer } from 'react-image-viewer-hook'
+import {useTonConnect} from "@/hooks/useTonConnect.ts";
 
 
 
 export default function ({task})
 {
+    const senderAddress= useTonConnect()
     const { getOnClick, ImageViewer } = useImageViewer()
     const { url, component } = usePage()
-    const images=task.images.map((img)=> <img className={"max-w-24"} onClick={getOnClick('/'+img.link)} src={'/'+img.link} />);
+    const images=task.images.map((img)=> <img key={img.id} className={"max-w-24"} onClick={getOnClick('/'+img.link)} src={'/'+img.link} />);
     const [message,setMsg]=useState({
         id:BigInt(task.id),
         sender:Address.parse(task.user_id),
@@ -33,11 +35,15 @@ export default function ({task})
         let address= await contract.getChild(task.id);
         contract.markAsDone(address)
     }
+    const markAsDone= () =>{
+        router.post('/markasdone',{'id':task.id})
+    }
 
     function takeTask()
     {
         let work={
             id:task.id,
+            initdata:'query_id=AAHwKoYUAwAAAPAqhhS-dqin&user=%7B%22id%22%3A6786788080%2C%22first_name%22%3A%22wh%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22Robuser%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1716578184&hash=22e0f05ae4de6b44ea7e2e2c8de2694a05ee9c5389dcdcc903d030e3d7631520',
             wallet:tonAddress.toString()
         }
         router.post('/taketask',work)
@@ -49,7 +55,7 @@ export default function ({task})
        {
            let info = await contract.getChildInfo(address)
 
-           if(Number(info.status) !== task.status)
+           if(Number(info.status) === 1 && task.status === 1 || Number(info.status) === 4 && task.status !== 4 )
            {
                router.post('/updtask',{id:Number(task.id),status:Number(info.status),exec:info.executor.toString()})
            }
@@ -60,7 +66,17 @@ export default function ({task})
     const share=()=>{
         window.Telegram.WebApp.openTelegramLink(url)
     }
-    const responses= task.responses.map(res=> <li>{res.user_id}</li>)
+    const responses= task.responses.map(res=> <Block key={res.id} className={"flex justify-between items-center"} strong inset outline>
+        <div onClick={()=>console.log('user profile')}>
+            <div>{res.user.fname} {res.user.lname}</div>
+            <div>{res.user.wallet}</div>
+        </div>
+        <div>
+            <button onClick={()=>chooseFunc(res)}>choose</button>
+        </div>
+    </Block>)
+
+
     return (
         <Page>
         <Navbar
@@ -76,11 +92,18 @@ export default function ({task})
          <BlockFooter>
              price:{ task.price}
          </BlockFooter>
+            <div>
+                status: {task.status}
+            </div>
+
             {images}
             <ImageViewer/>
-            <button onClick={share}>share</button>
-            <button onClick={takeTask}>take task</button>
-            {responses}
+            {task.status === 0 ? <Button>Take task</Button> : ''}
+            {task.status ===0 ? responses : ""}
+            <div>
+                {task.status === 1 ? <Button onClick={markAsDone}>mark as done</Button> : ''}
+                {task.status === 2 ? <Button onClick={done}>Realese money</Button> : ''}
+            </div>
         </Page>
 
     )

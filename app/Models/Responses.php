@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Responses extends Model
 {
     use HasFactory;
-
+    protected $with=['user'];
     function task()
     {
         return $this->hasOne(Task::class,'id','task_id');
+    }
+    function user()
+    {
+        return $this->hasOne(User::class,'wallet','user_id');
     }
 }
