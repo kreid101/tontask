@@ -1,1 +1,0 @@
-import{a as s,r as o,y as c,j as n,T as r}from"./app-Bm04dP3b.js";import{u as a}from"./useTonConnect-JTDOFKG6.js";function f(){const t=a(),e=s();return o.useEffect(()=>{t.connected===!0&&c.get("/tasks/"+e)},[t.connected]),n.jsxs(n.Fragment,{children:[n.jsx(r,{}),t.connected===!1?n.jsx("h1",{children:"connect your wallet"}):""]})}export{f as default};

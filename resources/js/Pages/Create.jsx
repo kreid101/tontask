@@ -29,10 +29,7 @@ export default function Create()
     const [popupwin,setpopupwin]=useState(false)
     const [values,setValues] = useState({
         wallet:tonAddress.toString(),
-        user_id:window.Telegram.WebApp.initData.user_id,
-        first_name:window.Telegram.WebApp.initData.first_name,
-        last_name:window.Telegram.WebApp.initData.last_name,
-        username:window.Telegram.WebApp.initData.username,
+        initdata:window.Telegram.WebApp.initData,
         headline:"",
         desc:"",
         images:[],
@@ -42,7 +39,6 @@ export default function Create()
      function handleSubmit() {
         if(tonConnect.connected)
         {
-            console.log(values)
             router.post('/newtask',values)
         }
        else

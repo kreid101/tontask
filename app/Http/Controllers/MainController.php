@@ -55,8 +55,24 @@ class MainController extends Controller
     }
     function newUser($req)
     {
+        $queryString = $req->initdata;
+
+        parse_str($queryString, $initData);  // Split into key-value pairs
+
+        // Decode and parse user data
+        try {
+            $initData['user'] = json_decode(urldecode($initData['user']), true);
+        } catch (Exception $e) {
+            echo "Error parsing user data: " . $e->getMessage();
+        }
+
         $user = new User();
+        $user->fname=$initData['user']['first_name'];
+        $user->lname=$initData['user']['last_name'];
+        $user->username=$initData['user']['username'];
+        $user->tid=$initData['user']['id'];
         $user->wallet=$req->wallet;
+
         $user->save();
         return $user;
     }
