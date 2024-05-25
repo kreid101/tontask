@@ -66,7 +66,7 @@ export default function ({task})
     const share=()=>{
         window.Telegram.WebApp.openTelegramLink(url)
     }
-    const responses= task.responses.map(res=> <Block key={res.id} className={"flex justify-between items-center"} strong inset outline>
+    const responses= task.responses.map(res=> <Block key={res.id} className={"flex justify-between items-center overflow-scroll"} strong inset outline>
         <div onClick={()=>console.log('user profile')}>
             <div>{res.user.fname} {res.user.lname}</div>
             <div>{res.user.wallet}</div>
