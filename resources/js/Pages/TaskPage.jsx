@@ -98,7 +98,7 @@ export default function ({task})
 
             {images}
             <ImageViewer/>
-            {task.status === 0 ? <Button>Take task</Button> : ''}
+            {task.status === 0 ? <Button onClick={takeTask}>Take task</Button> : ''}
             {task.status ===0 ? responses : ""}
             <div>
                 {task.status === 1 ? <Button onClick={markAsDone}>mark as done</Button> : ''}
