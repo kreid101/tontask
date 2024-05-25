@@ -43,7 +43,7 @@ export default function ({task})
     {
         let work={
             id:task.id,
-            initdata:'query_id=AAHwKoYUAwAAAPAqhhS-dqin&user=%7B%22id%22%3A6786788080%2C%22first_name%22%3A%22wh%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22Robuser%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1716578184&hash=22e0f05ae4de6b44ea7e2e2c8de2694a05ee9c5389dcdcc903d030e3d7631520',
+            initdata:window.Telegram.WebApp.initData,
             wallet:tonAddress.toString()
         }
         router.post('/taketask',work)
