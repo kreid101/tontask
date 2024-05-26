@@ -1,44 +1,44 @@
 {
-  "_Icons-wtQG6lN_.js": {
-    "file": "assets/Icons-wtQG6lN_.js",
+  "_Icons-BTIFRvuO.js": {
+    "file": "assets/Icons-BTIFRvuO.js",
     "name": "Icons",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Layout-B1eguVkF.js": {
-    "file": "assets/Layout-B1eguVkF.js",
+  "_Layout-CdjkUF7Y.js": {
+    "file": "assets/Layout-CdjkUF7Y.js",
     "name": "Layout",
     "imports": [
       "resources/js/app.jsx",
-      "_Icons-wtQG6lN_.js",
-      "_useTonConnect-Bp07rHFF.js"
+      "_Icons-BTIFRvuO.js",
+      "_useTonConnect-9FIUBJKr.js"
     ]
   },
-  "_index-IdizLvpp.js": {
-    "file": "assets/index-IdizLvpp.js",
+  "_index-QqXphCoe.js": {
+    "file": "assets/index-QqXphCoe.js",
     "name": "index",
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-Bp07rHFF.js"
+      "_useTonConnect-9FIUBJKr.js"
     ]
   },
-  "_store-OZk9-reD.js": {
-    "file": "assets/store-OZk9-reD.js",
+  "_store-1yJo5zJx.js": {
+    "file": "assets/store-1yJo5zJx.js",
     "name": "store",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_useTonConnect-Bp07rHFF.js": {
-    "file": "assets/useTonConnect-Bp07rHFF.js",
+  "_useTonConnect-9FIUBJKr.js": {
+    "file": "assets/useTonConnect-9FIUBJKr.js",
     "name": "useTonConnect",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
   "node_modules/react-image-viewer-hook/dist/ImageViewer-5KR27HWJ.js": {
-    "file": "assets/ImageViewer-5KR27HWJ-YW8rlRXO.js",
+    "file": "assets/ImageViewer-5KR27HWJ-C1y3Yb3V.js",
     "name": "ImageViewer-5KR27HWJ",
     "src": "node_modules/react-image-viewer-hook/dist/ImageViewer-5KR27HWJ.js",
     "isDynamicEntry": true,
@@ -47,97 +47,97 @@
     ]
   },
   "resources/js/Pages/Create.jsx": {
-    "file": "assets/Create-BMzwaUYD.js",
+    "file": "assets/Create-DC7UUhXt.js",
     "name": "Create",
     "src": "resources/js/Pages/Create.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-Bp07rHFF.js",
-      "_Icons-wtQG6lN_.js"
+      "_useTonConnect-9FIUBJKr.js",
+      "_Icons-BTIFRvuO.js"
     ],
     "css": [
       "assets/Create-BJZYDppB.css"
     ]
   },
   "resources/js/Pages/Exec.jsx": {
-    "file": "assets/Exec-BRsD9HPA.js",
+    "file": "assets/Exec-RghE4_RP.js",
     "name": "Exec",
     "src": "resources/js/Pages/Exec.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-B1eguVkF.js",
-      "_store-OZk9-reD.js",
-      "_Icons-wtQG6lN_.js",
-      "_useTonConnect-Bp07rHFF.js"
+      "_Layout-CdjkUF7Y.js",
+      "_store-1yJo5zJx.js",
+      "_Icons-BTIFRvuO.js",
+      "_useTonConnect-9FIUBJKr.js"
     ]
   },
   "resources/js/Pages/Main.jsx": {
-    "file": "assets/Main-HZH1tiGf.js",
+    "file": "assets/Main-Bk-IF1B7.js",
     "name": "Main",
     "src": "resources/js/Pages/Main.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-Bp07rHFF.js"
+      "_useTonConnect-9FIUBJKr.js"
     ]
   },
   "resources/js/Pages/MyWallet.jsx": {
-    "file": "assets/MyWallet-DzRnPKWC.js",
+    "file": "assets/MyWallet-DEZtTvth.js",
     "name": "MyWallet",
     "src": "resources/js/Pages/MyWallet.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_Icons-wtQG6lN_.js",
-      "_Layout-B1eguVkF.js",
-      "_useTonConnect-Bp07rHFF.js"
+      "_Icons-BTIFRvuO.js",
+      "_Layout-CdjkUF7Y.js",
+      "_useTonConnect-9FIUBJKr.js"
     ]
   },
   "resources/js/Pages/TakenTasks.jsx": {
-    "file": "assets/TakenTasks-BnKMZ-lU.js",
+    "file": "assets/TakenTasks-GOImSzND.js",
     "name": "TakenTasks",
     "src": "resources/js/Pages/TakenTasks.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_Icons-wtQG6lN_.js",
-      "_Layout-B1eguVkF.js",
-      "_useTonConnect-Bp07rHFF.js"
+      "_Icons-BTIFRvuO.js",
+      "_Layout-CdjkUF7Y.js",
+      "_useTonConnect-9FIUBJKr.js"
     ]
   },
   "resources/js/Pages/TaskPage.jsx": {
-    "file": "assets/TaskPage-hDzUEru-.js",
+    "file": "assets/TaskPage-Mi-UwNC0.js",
     "name": "TaskPage",
     "src": "resources/js/Pages/TaskPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-Bp07rHFF.js",
-      "_index-IdizLvpp.js",
-      "_Icons-wtQG6lN_.js"
+      "_useTonConnect-9FIUBJKr.js",
+      "_index-QqXphCoe.js",
+      "_Icons-BTIFRvuO.js"
     ],
     "dynamicImports": [
       "node_modules/react-image-viewer-hook/dist/ImageViewer-5KR27HWJ.js"
     ]
   },
   "resources/js/Pages/Tasks.jsx": {
-    "file": "assets/Tasks-DGlkQzc9.js",
+    "file": "assets/Tasks-DPQpuT3e.js",
     "name": "Tasks",
     "src": "resources/js/Pages/Tasks.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-Bp07rHFF.js",
-      "_Layout-B1eguVkF.js",
-      "_store-OZk9-reD.js",
-      "_index-IdizLvpp.js",
-      "_Icons-wtQG6lN_.js"
+      "_useTonConnect-9FIUBJKr.js",
+      "_Layout-CdjkUF7Y.js",
+      "_store-1yJo5zJx.js",
+      "_index-QqXphCoe.js",
+      "_Icons-BTIFRvuO.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-Cvgke5Jc.js",
+    "file": "assets/app-CB4R3EJx.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
