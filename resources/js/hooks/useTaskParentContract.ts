@@ -9,7 +9,7 @@ import {TonTaskChild} from "../build/TonTaskChild/tact_TonTaskChild";
 export function useTaskParentContract() {
     const sender=useTonConnect()
     const client = new TonClient({
-        endpoint: 'https://toncenter.com/api/v2/jsonRPC',
+        endpoint: 'https://testnet.toncenter.com/api/v2/jsonRPC',
         apiKey:'7f9775a808b429f000a1bd9a8ee2c23ae2bc5df3d2930d6991fe84c01acf8c5c'
     });
     const ParentContractAddress = TonTaskMaster.fromAddress(Address.parse("EQD108FofiQ8Zg1EYS2cDRiykEwW_Y7oTdaIdYvk5jHz_TEc"))
