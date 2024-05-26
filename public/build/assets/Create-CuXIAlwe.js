@@ -1,4 +1,4 @@
-import{R as xs,r as Ve,u as Vs,a as Hs,q as qs,y as _t,j as ne,T as Ws}from"./app-BP5urgA0.js";import{u as Ys}from"./useTonConnect-9Ml4D3Eo.js";import{P as $s,N as ks,I as zs,a as Xs,b as js,L as Qs,c as gt,B as Zs,d as Ks}from"./Icons-yLrE6blW.js";/*!
+import{R as xs,r as Ve,u as Vs,a as Hs,q as qs,y as _t,j as ne,T as Ws}from"./app-BgYK1VOg.js";import{u as Ys}from"./useTonConnect-DdoPZAOQ.js";import{P as $s,N as ks,I as zs,a as Xs,b as js,L as Qs,c as gt,B as Zs,d as Ks}from"./Icons-CEzKBQF_.js";/*!
  * FilePond 4.31.1
  * Licensed under MIT, https://opensource.org/licenses/MIT/
  * Please visit https://pqina.nl/filepond/ for details.
