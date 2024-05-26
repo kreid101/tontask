@@ -45,6 +45,7 @@ PROGRAM{
   DECLPROC $TonTaskMaster$_internal_binary_InternalTask
   DECLPROC $TonTaskMaster$_internal_binary_ChildCallback
   DECLPROC %$TonTaskMaster$_internal_empty
+  DECLPROC $TonTaskMaster$_internal_text_0c1cd7659460b0f81b94237cd5ffc13a4fb58ea689b2815de74dd3770646a4ea
   DECLPROC $TonTaskMaster$_internal_binary_Deploy
   104128 DECLMETHOD %balance
   109656 DECLMETHOD %addressOfChild
@@ -615,6 +616,10 @@ PROGRAM{
   }>
   %$TonTaskMaster$_internal_empty PROCINLINE:<{
   }>
+  $TonTaskMaster$_internal_text_0c1cd7659460b0f81b94237cd5ffc13a4fb58ea689b2815de74dd3770646a4ea PROCINLINE:<{
+    PUSHNULL
+    s3 POP
+  }>
   $TonTaskMaster$_internal_binary_Deploy PROCINLINE:<{
     $DeployOk$_constructor_queryId INLINECALLDICT
     $DeployOk$_store_cell INLINECALLDICT
@@ -644,7 +649,7 @@ PROGRAM{
     86142586315491086060343270784266291122 PUSHINT
   }>
   get_abi_ipfs PROC:<{
-    x{697066733a2f2f516d646633676d3645634a354d7453784c67736d50566b69776265515776356b7a374258675a4e63386d4d336f56} PUSHSLICE
+    x{697066733a2f2f516d5156416866336e486e7444574a71376956586d4343574b4345777053585152677447696838416b773654474b} PUSHSLICE
   }>
   lazy_deployment_completed PROC:<{
     c4 PUSH
@@ -653,6 +658,8 @@ PROGRAM{
     SWAP
   }>
   $TonTaskMaster$_contract_router_internal PROCREF:<{
+    c2 SAVE
+    SAMEALTSAVE
     SWAP
     IFJMP:<{
       DROP
@@ -698,15 +705,29 @@ PROGRAM{
       %$TonTaskMaster$_internal_empty INLINECALLDICT
       TRUE
     }>
+    DUP
     2490013878 PUSHINT
     EQUAL
     IFJMP:<{
+      DROP
       $Deploy$_load INLINECALLDICT
       NIP
       $TonTaskMaster$_internal_binary_Deploy INLINECALLDICT
       TRUE
     }>
-    DROP
+    0 EQINT
+    IF:<{
+      HASHSU
+      5478712514858160429952559455580538452086151038933333316181387135928500659434 PUSHINT
+      EQUAL
+      IFJMP:<{
+        $TonTaskMaster$_internal_text_0c1cd7659460b0f81b94237cd5ffc13a4fb58ea689b2815de74dd3770646a4ea INLINECALLDICT
+        TRUE
+        RETALT
+      }>
+    }>ELSE<{
+      DROP
+    }>
     FALSE
   }>
   recv_internal PROC:<{

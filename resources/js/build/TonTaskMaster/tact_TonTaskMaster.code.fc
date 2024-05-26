@@ -57,6 +57,12 @@
     return (($self'taskCount, $self'owner, ($self'childAddresses'address, $self'childAddresses'length), $self'min_balance), ());
 }
 
+((int, slice, (cell, int), int), ()) $TonTaskMaster$_internal_text_0c1cd7659460b0f81b94237cd5ffc13a4fb58ea689b2815de74dd3770646a4ea((int, slice, (cell, int), int) $self) impure inline {
+    var ($self'taskCount, $self'owner, ($self'childAddresses'address, $self'childAddresses'length), $self'min_balance) = $self;
+    $self'childAddresses'address = null();
+    return (($self'taskCount, $self'owner, ($self'childAddresses'address, $self'childAddresses'length), $self'min_balance), ());
+}
+
 (((int, slice, (cell, int), int)), ()) $TonTaskMaster$_internal_binary_Deploy((int, slice, (cell, int), int) $self, (int) $deploy) impure inline {
     var ($self'taskCount, $self'owner, ($self'childAddresses'address, $self'childAddresses'length), $self'min_balance) = $self;
     var ($deploy'queryId) = $deploy;
@@ -98,7 +104,7 @@ _ supported_interfaces() method_id {
 }
 
 _ get_abi_ipfs() method_id {
-    return "ipfs://Qmdf3gm6EcJ5MtSxLgsmPVkiwbeQWv5kz7BXgZNc8mM3oV";
+    return "ipfs://QmQVAhf3nHntDWJq7iVXmCCWKCEwpSXQRgtGih8Akw6TGK";
 }
 
 _ lazy_deployment_completed() method_id {
@@ -147,6 +153,17 @@ _ lazy_deployment_completed() method_id {
         var msg = in_msg~$Deploy$_load();
         self~$TonTaskMaster$_internal_binary_Deploy(msg);
         return (self, true);
+    }
+    
+    ;; Text Receivers
+    if (op == 0) {
+        var text_op = slice_hash(in_msg);
+        
+        ;; Receive "clear" message
+        if (text_op == 0x0c1cd7659460b0f81b94237cd5ffc13a4fb58ea689b2815de74dd3770646a4ea) {
+            self~$TonTaskMaster$_internal_text_0c1cd7659460b0f81b94237cd5ffc13a4fb58ea689b2815de74dd3770646a4ea();
+            return (self, true);
+        }
     }
     
     return (self, false);

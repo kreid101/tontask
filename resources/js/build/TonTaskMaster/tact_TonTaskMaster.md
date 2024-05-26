@@ -1,6 +1,6 @@
 # TACT Compilation Report
 Contract: TonTaskMaster
-BOC Size: 1326 bytes
+BOC Size: 1384 bytes
 
 # Types
 Total Types: 12
