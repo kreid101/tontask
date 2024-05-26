@@ -55,7 +55,7 @@ export default function ({task})
        {
            let info = await contract.getChildInfo(address)
 
-           if(Number(info.status) === 1 && task.status === 1 || Number(info.status) === 4 && task.status !== 4 )
+           if(Number(info.status) === 1 && task.status !== 1 || Number(info.status) === 4 && task.status !== 4 )
            {
                router.post('/updtask',{id:Number(task.id),status:Number(info.status),exec:info.executor.toString()})
            }
