@@ -7,9 +7,12 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import {useState,useEffect} from "react";
 import * as filepond from "filepond";
 import {TonConnectButton, useTonAddress, useTonWallet} from "@tonconnect/ui-react";
-import {Icon, List, ListInput, Navbar, Page, Notification, Button,Popup} from "konsta/react";
-import {arrowLeft} from "@/components/Icons.jsx";
+import {Icon, List, ListInput, Navbar, Page, Notification, Button, Popup, BlockTitle, Block} from "konsta/react";
+
+import {arrowLeft, close} from "@/components/Icons.jsx";
 import {usePage,router} from "@inertiajs/react";
+import { Input, Section, Textarea,Text} from "@telegram-apps/telegram-ui";
+
 
 
 filepond.setOptions({
@@ -31,6 +34,7 @@ export default function Create()
         wallet:tonAddress.toString(),
         initdata:window.Telegram.WebApp.initData,
         headline:"",
+        tags:"",
         desc:"",
         images:[],
         price:0
@@ -85,44 +89,43 @@ export default function Create()
                 <Navbar
                     centerTitle
                     title="Create Task"
-                    left={<Icon onClick={visitMain} className={"cursor-pointer"} material={arrowLeft()}></Icon> }
+                    left={<Icon onClick={visitMain} className={"cursor-pointer"} material={close()}></Icon> }
+                    colors={{bgMaterial:'bg-t-black',textMaterial:'text-white'}}
                 />
-                {flash.message}
+                <BlockTitle colors={{textMaterial:"text-t-blue"}}>
+                    Task information
+                </BlockTitle>
+                <Block colors={{textMaterial:"text-t-hint"}}>
+                    Make a detailed description that will explain the task to worker. Information below will be available to all participants to take to execution.
+                </Block>
+
+
                 <Notification
                     opened={flash.message === 'success'}
                     title="Your task is created"
                     text="You will be redirected to main page"
                 />
-                <List>
-                    <ListInput onChange={handleChange} inputId={'headline'} outline  type="text"  placeholder="Your Title" label={"Title"}></ListInput>
-                    <ListInput
-                        outline
-                        inputId={'desc'}
-                        onChange={handleChange}
-                        label="Description"
-                        type="textarea"
-                        placeholder="Task description"
-                        inputClassName="!h-20 resize-none"
-                    />
-                    <ListInput
-                        outline
-                        label="Price"
-                        type="text"
-                        placeholder="1"
-                        inputId={'price'}
-                        onChange={handleChange}
-                    />
-                    <FilePond
-                        onprocessfile={(error, file) => {
-                            addImage(file)
-                        }}
-                        allowMultiple={true}
-                        maxFiles={3}
-                        name="files"
-                        labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-                    />
-                    <Button onClick={handleSubmit}>Send</Button>
+                <List strong outline>
+                    <Input required header="Title"  onChange={handleChange} id={'headline'} />
+                    <Textarea  header="Description"  onChange={handleChange} id={'desc'} />
+                    <Input  header="Tags"  onChange={handleChange} id={'tags'} />
+                    <Input  header="Price"  onChange={handleChange} id={'price'} />
+
+                        <FilePond
+                            onprocessfile={(error, file) => {
+                                addImage(file)
+                            }}
+                            allowMultiple={true}
+                            maxFiles={3}
+                            name="files"
+                            labelIdle='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+</svg>
+Attach file'
+                        />
+
                 </List>
+                <Button className={"w-10/12 mx-auto"} colors={{activeBgMaterial:'bg-t-blue', fillBgMaterial:"bg-t-blue"}} onClick={handleSubmit}>Submit</Button>
 
                 <Popup opened={popupwin} onBackdropClick={() => setpopupwin(false)}>
                     <TonConnectButton/>

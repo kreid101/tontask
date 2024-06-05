@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[type='text']:focus {
+    outline-color: transparent;
+    outline-style: none;
+    --tw-ring-color: none;
+}
+.filepond-root
+{
+
+}
+.filepond--credits
+{
+    display: none;
+}
+.filepond--panel-root {
+    background-color: transparent !important;
+
+}
+.filepond--drop-label.filepond--drop-label label
+{
+    display: flex  !important;
+
+    color: #2990FF !important;
+}
+.filepond--drop-label
+{
+    justify-content: flex-start !important;
+    margin-left: 20px !important;
+}

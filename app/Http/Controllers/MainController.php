@@ -28,7 +28,8 @@ class MainController extends Controller
     function task(Request $request)
     {
         $task=Task::with('responses')->find($request->num);
-        return Inertia::render("TaskPage",['task'=>$task]);
+        return Inertia::render("Router",['task'=>$task]);
+       // return Inertia::render("TaskPage",['task'=>$task]);
     }
     function create()
     {
@@ -46,6 +47,7 @@ class MainController extends Controller
         $task->user_id=$user->wallet;
         $task->headline=$request->headline;
         $task->description=$request->desc;
+        $task->tags=$request->tags;
         $task->price=$request->price;
         $task->status=Status::$status['created'];
         $task->save();
@@ -68,7 +70,6 @@ class MainController extends Controller
         $user->username=$initData['user']['username'];
         $user->tid=$initData['user']['id'];
         $user->wallet=$req->wallet;
-
         $user->save();
         return $user;
     }

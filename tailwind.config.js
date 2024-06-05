@@ -15,6 +15,13 @@ module.exports = konstaConfig({
 
     theme: {
         extend: {
+            colors:{
+                t:{
+                    black:"#212121",
+                    blue:"#2990FF",
+                    hint:"#AAAAAA"
+                }
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

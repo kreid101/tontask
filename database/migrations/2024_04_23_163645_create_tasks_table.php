@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('exec_id')->nullable();
             $table->string('headline',256);
             $table->string('description',2048);
+            $table->string('tags',1024);
             $table->dateTime("deadline")->nullable();
             $table->string("price");
             $table->integer("status");
