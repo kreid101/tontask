@@ -1,40 +1,48 @@
 {
-  "_Icons-DWHZI5XN.js": {
-    "file": "assets/Icons-DWHZI5XN.js",
+  "_Icons-DzLQiuV5.js": {
+    "file": "assets/Icons-DzLQiuV5.js",
     "name": "Icons",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_Layout-CfF1bjtW.js": {
-    "file": "assets/Layout-CfF1bjtW.js",
+  "_Layout-CJBLlwtM.js": {
+    "file": "assets/Layout-CJBLlwtM.js",
     "name": "Layout",
     "imports": [
       "resources/js/app.jsx",
-      "_Icons-DWHZI5XN.js",
-      "_useTonConnect-NEhPbHnQ.js"
+      "_Icons-DzLQiuV5.js",
+      "_useTonConnect-D0G-ApO6.js"
     ]
   },
-  "_index-s8hqR5c_.js": {
-    "file": "assets/index-s8hqR5c_.js",
+  "_index-BguwbhVt.js": {
+    "file": "assets/index-BguwbhVt.js",
+    "name": "index",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_index-CN5ZtkGx.js": {
+    "file": "assets/index-CN5ZtkGx.js",
     "name": "index",
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-NEhPbHnQ.js"
+      "_index-BguwbhVt.js"
     ]
   },
-  "_store-C1j2meMb.js": {
-    "file": "assets/store-C1j2meMb.js",
+  "_store-CVLJbf3D.js": {
+    "file": "assets/store-CVLJbf3D.js",
     "name": "store",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_useTonConnect-NEhPbHnQ.js": {
-    "file": "assets/useTonConnect-NEhPbHnQ.js",
+  "_useTonConnect-D0G-ApO6.js": {
+    "file": "assets/useTonConnect-D0G-ApO6.js",
     "name": "useTonConnect",
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.jsx",
+      "_index-BguwbhVt.js"
     ]
   },
   "node_modules/@telegram-apps/telegram-ui/dist/2d82b92e720462f8dd3b.svg": {
@@ -42,7 +50,7 @@
     "src": "node_modules/@telegram-apps/telegram-ui/dist/2d82b92e720462f8dd3b.svg"
   },
   "node_modules/react-image-viewer-hook/dist/ImageViewer-5KR27HWJ.js": {
-    "file": "assets/ImageViewer-5KR27HWJ-CrjdiT3A.js",
+    "file": "assets/ImageViewer-5KR27HWJ-BYJ25SxO.js",
     "name": "ImageViewer-5KR27HWJ",
     "src": "node_modules/react-image-viewer-hook/dist/ImageViewer-5KR27HWJ.js",
     "isDynamicEntry": true,
@@ -51,106 +59,114 @@
     ]
   },
   "resources/js/Pages/Create.jsx": {
-    "file": "assets/Create-BIq2OcfP.js",
+    "file": "assets/Create-Ddq6Z9DC.js",
     "name": "Create",
     "src": "resources/js/Pages/Create.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-NEhPbHnQ.js",
-      "_Icons-DWHZI5XN.js"
+      "_useTonConnect-D0G-ApO6.js",
+      "_Icons-DzLQiuV5.js",
+      "_index-BguwbhVt.js"
     ],
     "css": [
       "assets/Create-BJZYDppB.css"
     ]
   },
   "resources/js/Pages/Exec.jsx": {
-    "file": "assets/Exec-D7Re20Fs.js",
+    "file": "assets/Exec-BlOU4qr9.js",
     "name": "Exec",
     "src": "resources/js/Pages/Exec.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_Layout-CfF1bjtW.js",
-      "_store-C1j2meMb.js",
-      "_Icons-DWHZI5XN.js",
-      "_useTonConnect-NEhPbHnQ.js"
+      "_Layout-CJBLlwtM.js",
+      "_store-CVLJbf3D.js",
+      "_Icons-DzLQiuV5.js",
+      "_useTonConnect-D0G-ApO6.js",
+      "_index-BguwbhVt.js"
     ]
   },
   "resources/js/Pages/Main.jsx": {
-    "file": "assets/Main-B-hq1NSl.js",
+    "file": "assets/Main-eU78v8da.js",
     "name": "Main",
     "src": "resources/js/Pages/Main.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-NEhPbHnQ.js"
+      "_useTonConnect-D0G-ApO6.js",
+      "_index-BguwbhVt.js"
     ]
   },
   "resources/js/Pages/MyWallet.jsx": {
-    "file": "assets/MyWallet-BZwozcwv.js",
+    "file": "assets/MyWallet-BUdzbAVW.js",
     "name": "MyWallet",
     "src": "resources/js/Pages/MyWallet.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_Icons-DWHZI5XN.js",
-      "_Layout-CfF1bjtW.js",
-      "_useTonConnect-NEhPbHnQ.js"
+      "_Icons-DzLQiuV5.js",
+      "_Layout-CJBLlwtM.js",
+      "_useTonConnect-D0G-ApO6.js",
+      "_index-BguwbhVt.js"
     ]
   },
   "resources/js/Pages/Router.jsx": {
-    "file": "assets/Router-DiPkoOC3.js",
+    "file": "assets/Router-gvQALQpf.js",
     "name": "Router",
     "src": "resources/js/Pages/Router.jsx",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.jsx",
+      "_index-BguwbhVt.js"
     ]
   },
   "resources/js/Pages/TakenTasks.jsx": {
-    "file": "assets/TakenTasks-DuGJhdnN.js",
+    "file": "assets/TakenTasks-Bt8o36fA.js",
     "name": "TakenTasks",
     "src": "resources/js/Pages/TakenTasks.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_Icons-DWHZI5XN.js",
-      "_Layout-CfF1bjtW.js",
-      "_useTonConnect-NEhPbHnQ.js"
+      "_Icons-DzLQiuV5.js",
+      "_Layout-CJBLlwtM.js",
+      "_useTonConnect-D0G-ApO6.js",
+      "_index-BguwbhVt.js"
     ]
   },
   "resources/js/Pages/TaskPage.jsx": {
-    "file": "assets/TaskPage-DgOYh0Sa.js",
+    "file": "assets/TaskPage-CGRG4TUJ.js",
     "name": "TaskPage",
     "src": "resources/js/Pages/TaskPage.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-NEhPbHnQ.js",
-      "_index-s8hqR5c_.js",
-      "_Icons-DWHZI5XN.js"
+      "_index-BguwbhVt.js",
+      "_useTonConnect-D0G-ApO6.js",
+      "_index-CN5ZtkGx.js",
+      "_Icons-DzLQiuV5.js"
     ],
     "dynamicImports": [
       "node_modules/react-image-viewer-hook/dist/ImageViewer-5KR27HWJ.js"
     ]
   },
   "resources/js/Pages/Tasks.jsx": {
-    "file": "assets/Tasks-BOJ0pzAB.js",
+    "file": "assets/Tasks-BWnLeV0r.js",
     "name": "Tasks",
     "src": "resources/js/Pages/Tasks.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_useTonConnect-NEhPbHnQ.js",
-      "_Layout-CfF1bjtW.js",
-      "_store-C1j2meMb.js",
-      "_index-s8hqR5c_.js",
-      "_Icons-DWHZI5XN.js"
+      "_useTonConnect-D0G-ApO6.js",
+      "_Layout-CJBLlwtM.js",
+      "_store-CVLJbf3D.js",
+      "_index-BguwbhVt.js",
+      "_index-CN5ZtkGx.js",
+      "_Icons-DzLQiuV5.js"
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-UyfY-aPd.js",
+    "file": "assets/app-B2y1bbeU.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -165,7 +181,7 @@
       "resources/js/Pages/Tasks.jsx"
     ],
     "css": [
-      "assets/app-UoNQC8dO.css"
+      "assets/app-iTX-QW3j.css"
     ],
     "assets": [
       "assets/2d82b92e720462f8dd3b-Bh4Fahcw.svg"

@@ -1,0 +1,1 @@
+import{u as a,r as t,j as o}from"./app-B2y1bbeU.js";import"./index-BguwbhVt.js";function l({task:s}){const e=a();return t.useEffect(()=>{console.log(window.Telegram.WebApp.initDataUnsafe),console.log(window.Telegram.WebApp.initData)},[e]),o.jsx("span",{className:"loader"})}export{l as default};
