@@ -6,8 +6,7 @@ export default function Router({task})
 {
     const wallet=useTonWallet()
     useEffect(()=>{
-        console.log(window.Telegram.WebApp.initDataUnsafe)
-        console.log(window.Telegram.WebApp.initData)
+        console.log(wallet?.account.address)
     },[wallet])
     return (
         <span className="loader"></span>

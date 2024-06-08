@@ -18,6 +18,5 @@ Route::post('/updtask',[\App\Http\Controllers\MainController::class,'updtask']);
 Route::post('/markasdone',[\App\Http\Controllers\MainController::class,'markasdone']);
 Route::get('/mywallet',[\App\Http\Controllers\MainController::class,'mywallet']);
 Route::get('/taken/{wallet?}',[\App\Http\Controllers\MainController::class,'takentasks']);
-Route::get('/video',function (){
-    return view('video');
-});
+
+

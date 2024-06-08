@@ -19,7 +19,8 @@ module.exports = konstaConfig({
                 t:{
                     black:"#212121",
                     blue:"#2990FF",
-                    hint:"#AAAAAA"
+                    hint:"#AAAAAA",
+                    gr:"rgba(255,255,255,0.08)"
                 }
             },
             fontFamily: {

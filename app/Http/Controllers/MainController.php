@@ -27,9 +27,8 @@ class MainController extends Controller
     }
     function task(Request $request)
     {
-        $task=Task::with('responses')->find($request->num);
-        return Inertia::render("Router",['task'=>$task]);
-       // return Inertia::render("TaskPage",['task'=>$task]);
+        $task=Task::with('responses','user')->find($request->num);
+       return Inertia::render("TaskPage",['task'=>$task]);
     }
     function create()
     {
