@@ -20,7 +20,7 @@ class Task extends Model
     }
     function user()
     {
-        return $this->hasOne(User::class,'id','user_id');
+        return $this->hasOne(User::class,'wallet','user_id');
     }
     protected function casts(): array
     {

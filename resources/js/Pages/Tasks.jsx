@@ -11,6 +11,14 @@ import {Plus} from "@/components/Icons.jsx";
 
 export default function Tasks({CreatedTasks})
 {
+    useEffect(()=>{
+        const urlParams = new URLSearchParams(window.Telegram.WebView.initParams.tgWebAppData);
+        const startParam = urlParams.get('start_param');
+        if(startParam !== null)
+        {
+            router.get('/task/'+startParam)
+        }
+    },[])
     const OpenChooseModal= (task)=>{
         setChTask(task);
         chmodal();

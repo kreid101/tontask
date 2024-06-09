@@ -1,22 +1,25 @@
 import TaskCreator from "@/components/TaskCreator.jsx";
-import {useEffect} from "react";
+import {useEffect,useState} from "react";
+import TaskWorker from "./TaskWorker";
 
 export default function ({task})
 {
-    const tid=task.user.tid
-    const usertid=window.Telegram.WebApp.initDataUnsafe.id;
-    const temp='';
+    let [temp,settemp]=useState('');
     useEffect(()=>{
-        console.log(task)
-        console.log(usertid)
+        const utid=task.user.tid;
+        const urlParams = new URLSearchParams(window.Telegram.WebApp.initData);
+        const startParam =JSON.parse(urlParams.get('user')).id;
+        if(utid == startParam)
+        {
+            settemp('creator')
+            console.log('true')
+        }
     },[])
 
 
     return (
-        <div>
 
-            <TaskCreator task={task}/>
-        </div>
+    temp === 'creator' ? <TaskCreator task={task}/> : <TaskWorker/>
 
     )
 }

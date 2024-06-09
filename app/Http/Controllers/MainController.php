@@ -51,8 +51,30 @@ class MainController extends Controller
         $task->status=Status::$status['created'];
         $task->save();
         $this->moveAndSave($request->images,$task);
-
+        $this->sendToBot($user);
         return Inertia::render('Create')->with('flash.message','success');
+    }
+    function sendToBot($user)
+    {
+        $botToken = "6822998882:AAHvtHF3yeWZg5kKsKIbrOd3Et9OhOHmMM8";
+        $chatId = $user->tid;
+        $message = "You created new Task!\n It`s available on link: \n https://t.me/taskton_bot/tontask?startapp";
+
+        $url = "https://api.telegram.org/bot$botToken/sendMessage";
+
+        $postFields = [
+            'chat_id' => $chatId,
+            'text' => $message,
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
     }
     function newUser($req)
     {
