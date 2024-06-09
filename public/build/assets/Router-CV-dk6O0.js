@@ -1,1 +1,0 @@
-import{u as o,r as t,j as a}from"./app-Cb3Jm0XQ.js";import"./index-GA24ctZQ.js";function u({task:e}){const s=o();return t.useEffect(()=>{console.log(s==null?void 0:s.account.address)},[s]),a.jsx("span",{className:"loader"})}export{u as default};
